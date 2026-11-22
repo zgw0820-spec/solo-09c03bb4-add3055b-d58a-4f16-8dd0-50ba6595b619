@@ -1,0 +1,60 @@
+{
+  "events": [
+    {
+      "type": "reconnect",
+      "neighbor": "192.0.2.1",
+      "session_id": 1,
+      "grace_seconds": 0,
+      "reason": "initial session established"
+    },
+    {
+      "type": "announce",
+      "neighbor": "192.0.2.1",
+      "session_id": 1,
+      "routes": [
+        {"prefix": "203.0.113.0/24", "next_hop": "10.0.0.1"},
+        {"prefix": "198.51.100.0/24", "next_hop": "10.0.0.1"},
+        {"prefix": "198.51.100.128/25", "next_hop": "10.0.0.1"}
+      ]
+    },
+    {
+      "type": "end_of_rib",
+      "neighbor": "192.0.2.1",
+      "session_id": 1
+    },
+    {
+      "type": "reconnect",
+      "neighbor": "192.0.2.1",
+      "session_id": 2,
+      "grace_seconds": 30,
+      "reason": "BGP session reset by peer"
+    },
+    {
+      "type": "announce",
+      "neighbor": "192.0.2.1",
+      "session_id": 2,
+      "routes": [
+        {"prefix": "203.0.113.0/24", "next_hop": "10.0.0.1"}
+      ]
+    },
+    {
+      "type": "withdraw",
+      "neighbor": "192.0.2.1",
+      "session_id": 2,
+      "prefixes": ["198.51.100.128/25"]
+    },
+    {
+      "type": "announce",
+      "neighbor": "192.0.2.1",
+      "session_id": 1,
+      "routes": [
+        {"prefix": "198.51.100.0/24", "next_hop": "10.0.0.1"}
+      ]
+    },
+    {
+      "type": "end_of_rib",
+      "neighbor": "192.0.2.1",
+      "session_id": 2
+    }
+  ]
+}

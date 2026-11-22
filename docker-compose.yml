@@ -1,0 +1,15 @@
+services:
+  route-visibility:
+    build: .
+    image: bgp-reconnect-route-visibility:local
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+    environment:
+      # Lower number = preferred when the same prefix arrives from both peers.
+      NEIGHBOR_PRIORITIES: "192.0.2.1=10,192.0.2.2=20"
+      DEFAULT_NEIGHBOR_PRIORITY: "100"
+      # Grace window used when a reconnect does not specify one.
+      RECONNECT_GRACE_SECONDS: "20"
+      # Seed the two-neighbour baseline at startup so Swagger is demo-ready.
+      DEMO_SEED: "1"
+    restart: unless-stopped

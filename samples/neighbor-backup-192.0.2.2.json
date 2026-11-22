@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "type": "reconnect",
+      "neighbor": "192.0.2.2",
+      "session_id": 1,
+      "grace_seconds": 0,
+      "reason": "initial session established"
+    },
+    {
+      "type": "announce",
+      "neighbor": "192.0.2.2",
+      "session_id": 1,
+      "routes": [
+        {"prefix": "203.0.113.0/24", "next_hop": "10.0.0.2"},
+        {"prefix": "198.51.100.0/24", "next_hop": "10.0.0.2"}
+      ]
+    },
+    {
+      "type": "end_of_rib",
+      "neighbor": "192.0.2.2",
+      "session_id": 1
+    }
+  ]
+}
